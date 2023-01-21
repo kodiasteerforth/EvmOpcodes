@@ -1,0 +1,169 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.7;
+
+interface  IERC721 {
+    function transferFrom(address _from, address _to, uint256 _amount) external;
+}
+
+contract codeDaily {
+    uint public engineer;
+    string public developer;
+    address private owner;
+    event log(string message);
+
+    constructor(uint _engineer, string memory _developer) {
+        engineer = _engineer;
+        developer = _developer;
+    }
+
+    function getHired() public view returns (uint) {
+        return engineer;
+    }
+
+    string message = "I AM A BLOCKCHAIN DEVELOPER";
+
+    function getRole() public view returns (string memory) {
+        return message;
+    }
+
+    function buyHouse() external payable {
+        require(msg.value == 100 ether, "Amount must be equal to 100 ether");
+    }
+
+    receive() external payable {
+        require(msg.sender == tx.origin);
+    }
+
+    function example1(uint _amount) public {
+        require(_amount > 10, "amount must be greater than 10");
+        emit log ("success");
+    }
+
+    function example2(uint _amount) public {
+        if (_amount <= 10) {
+            revert ("amount must be greater than 10");
+        }
+        emit log ("success");
+    }
+
+    function oddOrEven(uint x) external pure returns (string memory) {
+        if (x % 2 == 0) {
+            return "even";
+        } else {
+            return "odd";
+        }
+    }
+
+    function oddOrEven1(uint x) external pure returns (string memory) {
+        if (x % 2 == 0) {
+            return "even";
+        }
+        return "odd";
+    }
+
+    function oddOrEven2(uint x) external pure returns (string memory) {
+        return x % 2 == 0 ? "even" : "odd";
+    }
+
+    function add(uint a, uint b) external pure returns (uint) {
+        return a + b;
+    }
+
+    function xor(uint a, uint b) external pure returns (uint) {
+        return a ^ b;
+    }
+
+    function sub(uint a, uint b) external pure returns (uint) {
+        return a - b;
+    }
+
+    function mul(uint a, uint b) external pure returns (uint) {
+        return a * b;
+    }
+
+    function div(uint a, uint b) external pure returns (uint) {
+        return a / b;
+    }
+
+    function mod(uint a, uint b) external pure returns (uint) {
+        return a % b;
+    }
+
+    function exp(uint a, uint b) external pure returns (uint) {
+        return a ** b;
+    }
+
+    function inc(uint a) external pure returns (uint) {
+        a++;
+        return a;
+    }
+
+    function dec(uint a) external pure returns (uint) {
+        a--;
+        return a;
+    }
+
+    function gT(uint a, uint b) external pure returns (bool) {
+        return a > b;
+    }
+
+    function lT(uint a, uint b) external pure returns (bool) {
+        return a < b;
+    }
+
+    function gTeQ2(uint a, uint b) external pure returns (bool) {
+        return a >= b;
+    }
+
+    function lTeQ2(uint a, uint b) external pure returns (bool) {
+        return a <= b;
+    }
+
+    function eQ2(uint a, uint b ) external pure returns (bool) {
+        return a == b;
+    }
+
+    function notEq2(uint a, uint b) external pure returns (bool) {
+        return a != b;
+    }
+
+    function addExample() external pure returns (bool) {
+        return (2+2 == 4) && (4+4 == 8);
+    }
+
+    function not(bool a) external pure returns (bool) {
+        return !a;
+    }
+
+    function oR(bool a, bool b) external pure returns (bool) {
+        return a || b;
+    }
+
+    function and(bool a, bool b) external pure returns (bool) {
+        return a && b;
+    }
+
+    function checkBalance() public view returns (uint) {
+        return address(this).balance;
+    }
+
+    mapping(address => string) public accountBalance;
+
+
+    struct structPacking {
+        uint32 age;
+        uint32 name;
+        uint16 weight;
+        uint16 height;
+        uint8 sex;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "caller must be owner");
+        _;
+    }
+
+
+
+}
